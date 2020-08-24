@@ -1,16 +1,23 @@
-# Bookapp
-
-**Author**: Michael Wohl
+# Project Name: book_app
+**Author**: Michael Wohl & Riva Davidowski
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code 301 class. (i.e. What's your problem domain?) -->
+This app implements a basic full-stack application for a book list which will include the ability to search the Google Books API, add books to a database, and then render those books from a PostgreSQL database. This app also provides the ability to update the details of a book or remove it from the collection.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+* Create a basic `server.js file`. 
+* I made sure the server is listening for connections on a `PORT`. The view engine needs to be set and serve your static CSS files.
+* Installed necessary NPM packages and ensured that they are documented as dependencies in  `package.json`.
+* For server-side rendering, EJS looks for a folder called `views`. I had to create a `views` folder, with a `pages` subfolder. 
+* Within this subfolder, I created a file called `index.ejs`. 
+**Note: with server-side rendering, index.ejs is analogous to the typical index.html file that we are used to, but will also allow EJS syntax for templating.**
+* Created a basic HTML scaffold in your `index.ejs` file which contains several elements that can be viewed in the browser, such as a heading element that says `"Hello World"`. 
+* I also created a basic CSS file with several rules, such as an obvious background color. These served as a "proof of life" that the files are connected as expected, both locally and when deployed.
+* For testing purposes, I included a temporary route such as `app.get('/hello')` and rendered my `index.ejs` file. I turned on the server and validated that the HTML elements and basic CSS styles are being rendered as expected. This route is useful for the future if I need to test an application without relying on data from a database.
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+* For this project, we are using EJS for JS templating, Git, Github, Node.js to run Nodemon environment, Express and Google Books APIs.
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
@@ -18,5 +25,16 @@
 01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
 
 ## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
+
+----------------------------
+
+Number and name of feature: **FEATURE 1**: Scaffolding of files for set up and test route creatiion
+**Scaffolding of HTML files and server-side rendering and implementation of a test route to validate that the HTML elements and basic CSS styles are being rendered as expected**
+
+Estimate of time needed to complete: 2hrs
+
+Start time: 4:00pmpm, 8/24/2020
+
+Finish time: 
+
+Actual time needed to complete: 
