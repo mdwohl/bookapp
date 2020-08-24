@@ -7,6 +7,7 @@ const superagent = require('superagent');
 const pg = require('pg');
 const serveStatic = require('serve-static');
 const { request } = require('http');
+const { response } = require('express');
 require('dotenv').config();
 
 //Global Variables
@@ -26,3 +27,13 @@ app.get('/hello', (request, response) => {
 app.get('/search', (request, response) => {
   response.render('searches/new');
 });
+app.get('/',(request, response) => {
+  superagent.get('https://www.googleapis.com/books/v1/volume?q=+intitle')
+});
+app.get('/',(request, response) => {
+  superagent.get('https://www.googleapis.com/books/v1/volume?q=+inauthor')
+});
+
+// function getTitle(request, response){
+//   const searchTitlesUrl = 
+// }
