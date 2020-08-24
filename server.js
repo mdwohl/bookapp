@@ -23,3 +23,6 @@ app.listen(PORT, () => console.log(`listening to port: ${PORT}`));
 app.get('/hello', (request, response) => {
   response.render('pages/index');
 });
+app.get('/search', (request, response) => {
+  response.render('searches/new');
+});
