@@ -35,6 +35,28 @@ Estimate of time needed to complete: 2hrs
 
 Start time: 4:00pmpm, 8/24/2020
 
+Finish time: 5pm
+
+Actual time needed to complete: 1hr
+
+------
+Number and name of feature: **FEATURE 2**: Implementing a app.post route that allows user to search the Google Books API so that they can view the results their search
+
+Estimate of time needed to complete: 1hrs
+
+Start time: 5pm: 8/24/2020
+
+Finish time: 6:08
+
+Actual time needed to complete: 1hr8min
+
+-----------------
+Number and name of feature: **FEATURE 3**: Creating constructor function and a route handler for a `POST` request to `/searches`. This route's callback will use Superagent to proxy a request to the Google Books API and return a list of ten books that match the search query.
+
+Estimate of time needed to complete: 2hrs
+
+Start time: 611pm 8/24/2020
+
 Finish time: 
 
 Actual time needed to complete: 
