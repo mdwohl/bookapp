@@ -1,5 +1,5 @@
 # Project Name: book_app
-**Author**: Michael Wohl & Riva Davidowski
+**Authors**: Michael Wohl & Riva Davidowski
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
