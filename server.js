@@ -44,6 +44,8 @@ app.post('/searches/new', (request, response) => {
       //we will still have response.send but we will also have page we will send them to here as well
       response.send(books.body);
       //response.send('fileImGonna Create', { banana:books.body(or object name to right of colon)});
+      //we will basically insert the file path above and then use the {key:value}
+      // the key above will be used in our EJS when we loop through array
     })
     .catch(error => {
       console.log(error);
@@ -51,21 +53,20 @@ app.post('/searches/new', (request, response) => {
     });
 });
 
+
+
+
+/***************CONSTRUCTORS */
 //Make constructor function to normalize data we recieve back from API
 //Instead of sending back entire body, we will send back array of new constructor books
 // FOr example = const locationConstructor = new Location(superAgentResultArray, thingToSearch);
 // Add our new constructor inside superagent
 //Send object to another page and we would write EJS on that page to loop through the array we sent pages from server
-//
 
 
-
-
-
-// app.get('/',(request, response) => {
-//   superagent.get('https://www.googleapis.com/books/v1/volume?q=+inauthor')
-// });
-
-// function getTitle(request, response){
-//   const searchTitlesUrl = 
+// function Book (obj, search) {
+//   this.author = 
+//   this.title = 
+//   this.description =
+//   this.image =
 // }
