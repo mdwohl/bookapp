@@ -35,6 +35,8 @@ app.get('/search', (request, response) => {
 //POST route is for anytime we need information from the user
 //when the form is submittted, we want the URL to be called
 //post route needs to match the action in the form
+
+
 app.post('/searches/new', (request, response) => {
   console.log(request.body);
   let search = request.body.search;
@@ -43,7 +45,8 @@ app.post('/searches/new', (request, response) => {
     .then(books => {
       //we will still have response.send but we will also have page we will send them to here as well
       response.send(books.body);
-      //response.send('fileImGonna Create', { banana:books.body(or object name to right of colon)});
+      console.log(books.body);
+      //response.render('fileImGonna Create', { banana:books.body(or object name to right of colon)});
       //we will basically insert the file path above and then use the {key:value}
       // the key above will be used in our EJS when we loop through array
     })
@@ -53,7 +56,8 @@ app.post('/searches/new', (request, response) => {
     });
 });
 
-
+//ternary operator
+//that thing defined in js ? set it to ----- : otherwise set it to default image
 
 
 /***************CONSTRUCTORS */
@@ -64,9 +68,17 @@ app.post('/searches/new', (request, response) => {
 //Send object to another page and we would write EJS on that page to loop through the array we sent pages from server
 
 
-// function Book (obj, search) {
-//   this.author = 
-//   this.title = 
-//   this.description =
-//   this.image =
-// }
+// function Book (searchData) {
+// const volumeInfo = searchData.volumeInfo;
+//img url =
+//   this.image = img_url;
+//   this.imageTitle = volumeInfo.imageTitle;
+//   this.title = volumeInfo.title;
+//   this.author = volumeInfo.author;
+//   this.publisher = volumeInfo.publisher;
+//   this.desc = volumeInfo.description;
+//   this.isbn = volumeInfo.industryIdentifiers[1] ?
+//   volumeInfo.industryIdentifiers[1].identifier :
+//   '';
+//   this.pageCount = volumeInfo.pageCount;
+//}
