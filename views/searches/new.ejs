@@ -11,12 +11,13 @@
   <title>Search for a Book</title>
 </head>
 <body>
-  <form action="/searches/new" method="GET">
+  <form action="/searches/new" method="POST">
   <fieldset>
+    <input type ="text" name=search required>
     <label for="Search">Search by Title</label>
-    <input type='text' name='Search by Title'>
+    <input type='radio' name=search  value="title" required>
     <label for="Search">Search by Author</label>
-    <input type='text' name='Search by Author'>
+    <input type='radio' name=search value="author" required>
     <button type="submit">Submit</button>
   </fieldset>
   </form>
