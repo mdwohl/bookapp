@@ -14,7 +14,7 @@ This app implements a basic full-stack application for a book list which will in
 **Note: with server-side rendering, index.ejs is analogous to the typical index.html file that we are used to, but will also allow EJS syntax for templating.**
 * Created a basic HTML scaffold in `index.ejs` file which contains several elements that can be viewed in the browser, such as a heading element that says `"Hello World"`. 
 * Created a basic CSS file with several rules, such as an obvious background color. These served as a "proof of life" that the files are connected as expected, both locally and when deployed.
-* For testing purposes, we included a temporary route such as `app.get('/hello')` and rendered my `index.ejs` file. I turned on the server and validated that the HTML elements and basic CSS styles are being rendered as expected. This route is useful for the future if I need to test an application without relying on data from a database.
+* For testing purposes, we included a temporary route such as `app.get('/hello')` and rendered the `index.ejs` file. We turned on the server and validated that the HTML elements and basic CSS styles are being rendered as expected. This route is useful for the future if we need to test an application without relying on data from a database.
 
 ## Architecture
 * For this project, we are using EJS for JS templating, Git, Github, Node.js to run Nodemon environment, Express and Google Books APIs.
