@@ -68,17 +68,14 @@ app.post('/searches/new', (request, response) => {
 //Send object to another page and we would write EJS on that page to loop through the array we sent pages from server
 
 
-// function Book (searchData) {
-// const volumeInfo = searchData.volumeInfo;
-//img url =
-//   this.image = img_url;
-//   this.imageTitle = volumeInfo.imageTitle;
-//   this.title = volumeInfo.title;
-//   this.author = volumeInfo.author;
-//   this.publisher = volumeInfo.publisher;
-//   this.desc = volumeInfo.description;
-//   this.isbn = volumeInfo.industryIdentifiers[1] ?
-//   volumeInfo.industryIdentifiers[1].identifier :
-//   '';
-//   this.pageCount = volumeInfo.pageCount;
-//}
+function Book (searchData) {
+  const volumeInfo = searchData.volumeInfo;
+  //if there is a thumbnail, then use this, else use this
+  this.image = volumeInfo.imageLinks.thumbnail ? volumeInfo.imageLinks.thumbnail : `https://i.imgur.com/J5LVHEL.jpg`;
+  this.title = volumeInfo.title;
+  this.authors = volumeInfo.authors; // this is not a single value, but an array of authors
+  // when we decide to access this property in the template, remember that it is an array
+  this.publisher = volumeInfo.publisher;
+  this.description = volumeInfo.description;
+  this.pageCount = volumeInfo.pageCount;
+}
