@@ -38,15 +38,17 @@ app.get('/search', (request, response) => {
 
 
 app.post('/searches/new', (request, response) => {
-  console.log(request.body);
   let search = request.body.search;
   let string = `https://www.googleapis.com/books/v1/volumes?q=+in${search[1]}:${search[0]}`;
   superagent.get(string)
     .then(books => {
+      let bookArray = books.body.items.map(response => {
+        //items is the array of data coming back from the API
+        return new Book(response);
+      });
       //we will still have response.send but we will also have page we will send them to here as well
-      response.send(books.body);
-      console.log(books.body);
-      //response.render('fileImGonna Create', { banana:books.body(or object name to right of colon)});
+      response.send(bookArray);
+      response.render('/searches/show', {bookArray : bookArray});
       //we will basically insert the file path above and then use the {key:value}
       // the key above will be used in our EJS when we loop through array
     })
@@ -55,6 +57,25 @@ app.post('/searches/new', (request, response) => {
       response.status(500).send(error, 'Bad Request, Internal Server Error');
     });
 });
+
+// app.post('/searches', (request, response) => {
+//   console.log(request.body);
+//   let search = request.body.search;
+//   let string = `https://www.googleapis.com/books/v1/volumes?q=+in${search[1]}:${search[0]}=10`;
+//   superagent.get(string)
+//     .then(books => {
+//       //we will still have response.send but we will also have page we will send them to here as well
+//       response.send(books.body);
+//       console.log(books.body);
+//       //response.render('fileImGonna Create', { banana:books.body(or object name to right of colon)});
+//       //we will basically insert the file path above and then use the {key:value}
+//       // the key above will be used in our EJS when we loop through array
+//     })
+//     .catch(error => {
+//       console.log(error);
+//       response.status(500).send(error, 'Bad Request, Internal Server Error');
+//     });
+// });
 
 //ternary operator
 //that thing defined in js ? set it to ----- : otherwise set it to default image
@@ -72,6 +93,9 @@ function Book (searchData) {
   const volumeInfo = searchData.volumeInfo;
   //if there is a thumbnail, then use this, else use this
   this.image = volumeInfo.imageLinks.thumbnail ? volumeInfo.imageLinks.thumbnail : `https://i.imgur.com/J5LVHEL.jpg`;
+  if (!this.image.startswith('https')){
+    this.image = 'https' + this.image.slice(4);
+  }
   this.title = volumeInfo.title;
   this.authors = volumeInfo.authors; // this is not a single value, but an array of authors
   // when we decide to access this property in the template, remember that it is an array
@@ -79,3 +103,4 @@ function Book (searchData) {
   this.description = volumeInfo.description;
   this.pageCount = volumeInfo.pageCount;
 }
+
