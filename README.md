@@ -6,7 +6,7 @@
 This app implements a basic full-stack application for a book list which will include the ability to search the Google Books API, add books to a database, and then render those books from a PostgreSQL database. This app also provides the ability to update the details of a book or remove it from the collection.
 
 ## Getting Started
-* Create a basic `server.js file`. 
+* Created a basic `server.js file`. 
 * We made sure the server is listening for connections on a `PORT`. The view engine needs to be set and serve your static CSS files.
 * Installed necessary NPM packages and ensured that they are documented as dependencies in  `package.json`.
 * For server-side rendering, EJS looks for a folder called `views`. I had to create a `views` folder, with a `pages` subfolder. 
