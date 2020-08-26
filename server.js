@@ -6,12 +6,16 @@ const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
 const serveStatic = require('serve-static');
-const { response } = require('express');
 require('dotenv').config();
+const pg = require('pg');
 
 //Global Variables
 const PORT = process.env.PORT || 3003;
 const app = express();
+
+const client = new pg.Client(DATABASE_URL);
+client.on('error', error => console.error(error));
+
 
 //Server config and start
 app.set('view engine', 'ejs');
@@ -112,3 +116,10 @@ function Book (searchData) {
 app.get('*', handleError);
 // this proves that the handleError function is working
 app.listen(PORT, () => console.log(`listening to port: ${PORT}`));
+
+
+//start the server
+client.connect()
+  .then(() => {
+    app.listen(PORT,() => console.log(`listening on port ${PORT}`));
+  });
