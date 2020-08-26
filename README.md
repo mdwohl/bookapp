@@ -20,7 +20,6 @@ This app implements a basic full-stack application for a book list which will in
 * For this project, we are using EJS for JS templating, Git, Github, Node.js to run Nodemon environment, Express and Google Books APIs.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
 
