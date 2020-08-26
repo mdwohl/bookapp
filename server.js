@@ -6,6 +6,7 @@ const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
 const serveStatic = require('serve-static');
+const { response } = require('express');
 require('dotenv').config();
 
 //Global Variables
@@ -19,12 +20,10 @@ app.use(express.static('./public'));
 /*when we receive data from the frontend, we receive the URL encoded
 which creates the body*/
 app.use(express.urlencoded({extended:true}));
-app.listen(PORT, () => console.log(`listening to port: ${PORT}`));
+
+
 
 //Routes
-app.get('/hello', (request, response) => {
-  response.render('pages/index');
-});
 app.get('/search', (request, response) => {
   response.render('searches/new');
   //we are passing in a file that we've built using render
@@ -46,7 +45,6 @@ app.post('/searches/new', (request, response) => {
         //items is the array of data coming back from the API
         return new Book(response);
       });
-      //we will still have response.send but we will also have page we will send them to here as well
       response.render('searches/show', {bookArray : bookArray});
       //we will basically insert the file path above and then use the {key:value}
       // the key above will be used in our EJS when we loop through array
@@ -107,3 +105,7 @@ function Book (searchData) {
   this.pageCount = volumeInfo.pageCount;
 }
 
+
+app.get('*', handleError);
+// this proves that the handleError function is working
+app.listen(PORT, () => console.log(`listening to port: ${PORT}`));
