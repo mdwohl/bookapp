@@ -47,16 +47,19 @@ app.post('/searches/new', (request, response) => {
         return new Book(response);
       });
       //we will still have response.send but we will also have page we will send them to here as well
-      response.send(bookArray);
-      response.render('/searches/show', {bookArray : bookArray});
+      response.render('searches/show', {bookArray : bookArray});
       //we will basically insert the file path above and then use the {key:value}
       // the key above will be used in our EJS when we loop through array
     })
     .catch(error => {
-      console.log(error);
-      response.status(500).send(error, 'Bad Request, Internal Server Error');
+      handleError(error, response);
     });
 });
+
+function handleError(error, response){
+  console.error(error);
+  response.render('error', {error});
+}
 
 // app.post('/searches', (request, response) => {
 //   console.log(request.body);
@@ -92,8 +95,8 @@ app.post('/searches/new', (request, response) => {
 function Book (searchData) {
   const volumeInfo = searchData.volumeInfo;
   //if there is a thumbnail, then use this, else use this
-  this.image = volumeInfo.imageLinks.thumbnail ? volumeInfo.imageLinks.thumbnail : `https://i.imgur.com/J5LVHEL.jpg`;
-  if (!this.image.startswith('https')){
+  this.image = volumeInfo.imageLinks && volumeInfo.imageLinks.thumbnail ? volumeInfo.imageLinks.thumbnail : `https://i.imgur.com/J5LVHEL.jpg`;
+  if (!this.image.startsWith('https')){
     this.image = 'https' + this.image.slice(4);
   }
   this.title = volumeInfo.title;
