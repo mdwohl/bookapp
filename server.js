@@ -24,6 +24,12 @@ app.use(express.urlencoded({extended:true}));
 
 
 //Routes
+//this line of code can work for rendering index.ejs
+// app.get('/', function(req, res) {  res.render('home');});
+
+
+
+
 app.get('/search', (request, response) => {
   response.render('searches/new');
   //we are passing in a file that we've built using render
