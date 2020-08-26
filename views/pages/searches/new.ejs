@@ -8,21 +8,27 @@
   <link href="styles/modules.css" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search for a Book</title>
 </head>
 <body>
-  
+  <header id="best-books">
+    Best Books!
+  </header>
+  <h1 class="results-bar"> Search by Author or Title</h1>
 <!-- Forms and links talk to server  -->
+  <div class="api-container">
+  <div class="book-select">Enter a title or Author</div>
   <form action="/searches/new" method="POST">
   <fieldset>
     <input type ="text" name=search required>
-    <label for="Search">Search by Title</label>
+    <label for="Search" id="title">Title</label>
     <input type='radio' name=search  value="title" required>
-    <label for="Search">Search by Author</label>
+    <label for="Search">Author</label>
     <input type='radio' name=search value="author" required>
-    <button type="submit">Submit</button>
+    <button type="submit" id ="api-button">Search the GoogleBooks API</button>
   </fieldset>
   </form>
+</div>  
+</div>
   
 </body>
 </html>
