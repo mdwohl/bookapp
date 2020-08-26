@@ -48,7 +48,7 @@ app.post('/searches/new', (request, response) => {
         //items is the array of data coming back from the API
         return new Book(response);
       });
-      response.render('searches/show', {bookArray : bookArray});
+      response.render('pages/searches/show', {bookArray : bookArray});
       //we will basically insert the file path above and then use the {key:value}
       // the key above will be used in our EJS when we loop through array
     })
