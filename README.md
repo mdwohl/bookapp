@@ -17,7 +17,7 @@ This app implements a basic full-stack application for a book list which will in
 * For testing purposes, we included a temporary route such as `app.get('/hello')` and rendered the `index.ejs` file. We turned on the server and validated that the HTML elements and basic CSS styles are being rendered as expected. This route is useful for the future if we need to test an application without relying on data from a database.
 
 ## Architecture
-* For this project, we are using EJS for JS templating, Git, Github, Node.js to run Nodemon environment, Express and Google Books APIs.
+* For this project, we are using EJS for JS templating, Git, Github, Node.js to run Nodemon environment, Express, SQL, Postgres, and Google Books APIs.
 
 ## Change Log
 
@@ -56,6 +56,34 @@ Estimate of time needed to complete: 2hrs
 
 Start time: 611pm 8/24/2020
 
-Finish time: 
+Finish time: 7:30pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 1hr30 min
+
+----
+# FEATURE 4: As a user, I want a simple, clean looking UI so that my application is easy to navigate.
+
+Estimate of time needed to complete: 4 hrs
+
+Start time: 3:00pm
+
+Finish time: 7:30pm
+
+Actual time needed to complete: 4hrs30min
+
+Actual time needed to complete: 3hrs30min
+-------
+# FEATURE 5: Saved books to displayed on the home page so users can see all of the books from their collection in a single view.
+- Built our `index.ejs` file to utilize the database results when rendering the page. Followed correct EJS syntax to iterate over an array of book objects and rendered each one in a similar manner, according wireframes provided
+
+Estimate of time needed to complete: 4 hrs
+
+Start time: 2pm
+
+Finish time: 6:00pm
+
+Actual time needed to complete: 4hrs
+
+
+
+
