@@ -24,8 +24,11 @@ app.use(express.urlencoded({extended:true}));
 
 
 //Routes
-app.get('/search', (request, response) => {
-  response.render('searches/new');
+app.get('/', (request, response) => {
+  response.render('pages/index');
+});
+app.get('/searches/new', (request, response) => {
+  response.render('pages/searches/new');
   //we are passing in a file that we've built using render
 });
 
