@@ -4,15 +4,28 @@
   <%- include('../layout/head') %>
 </head>
 <body>
-  <h1> Results</h1>
-  <!-- Put in variable here from server.js from render -->
-  <ul>
-    <!-- for loop here -->
+  <header id="best-books">
+    Best Books!
+  </header>
+  <h1 class="results-bar"> Search Results</h1>
+  <!-- Put in variable here from server.js from response.render  -->
+    <!-- for loop here. The loop runs through the booksArray 
+    and renders a div with the image of the book, title and description -->
+  
     <% for(let i=0; i < bookArray.length;i++) { %>
-    <li><%= bookArray[i].title %>
-      <img src="<%= bookArray[i].image%>" alt="">
-    </li>
+      <div class="book-container">
+        <div class="image-container">
+      <img src="<%= bookArray[i].image%>" class="images" alt="">
+      </div>
+    <div class="book-title"><%= bookArray[i].title %>
+    </div>
+    <div class= "book-author">authorNameHere
+<!-- Add in author Name -remember that it is an array of authors which will require another for loop -->
+    </div>
+    <div class="book-description">
+      <%= bookArray[i].description %>
+    </div>
+  </div>
     <% } %>
-  </ul>
 </body>
 </html>
