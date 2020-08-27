@@ -1,48 +1,58 @@
 'use strict'
 
-//List of Packages
+//***********List of Packages
+
 const express = require('express');
 const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
-const serveStatic = require('serve-static');
 require('dotenv').config();
 const DATABASE_URL = process.env.DATABASE_URL;
 
-//Global Variables
+//********************Global Variables
+
 const PORT = process.env.PORT || 3003;
 const app = express();
+const methodOverride = require('method-override');
 
 const client = new pg.Client(DATABASE_URL);
 client.on('error', error => console.error(error));
 
 
 //Server config and start
+// all of these will check requests
 app.set('view engine', 'ejs');
 app.use(cors());
 app.use(express.static('./public'));
 /*when we receive data from the frontend, we receive the URL encoded
 which creates the body*/
 app.use(express.urlencoded({extended:true}));
+app.use(methodOverride('_method'));
 
 
 
-//Routes
+//********************Routes
+
 app.get('/', (request, response) => {
-  const sqlTable = `SELECT * FROM store_books`;
+  //we need to get params and then we can complete our query
+  //get the books from the database with a query
+  const sqlTable = (`SELECT * FROM store_books`);
   client.query(sqlTable)
     .then(result => {
       console.log(result);
-      response.render('pages/index', {bookArray : result});
+      response.render('pages/index', {bookArray : result.rows});
     })
     .catch(error => {
       handleError(error, response);
     });
 });
+
 app.get('/searches/new', (request, response) => {
   response.render('pages/searches/new');
   //we are passing in a file that we've built using render
 });
+
+
 
 //create a route that is an app.post route
 // we need information from the user to make a request to GoogleBooks API

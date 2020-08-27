@@ -10,13 +10,14 @@
     Best Books!
   </header>
   <h1 class="results-bar"> Saved Books</h1>
+  <% for(let i=0; i < bookArray.length;i++) { %>
   <div class="book-container">
     <div class="image-container">
   <img src="<%= bookArray[i].image%>" class="images" alt="">
   </div>
 <div class="book-title"><%= bookArray[i].title %>
 </div>
-<div class= "book-author"><% bookArray[i].authors %>
+<div class= "book-author"><% bookArray.authors %>
 <!-- Add in author Name -remember that it is an array of authors which will require another for loop -->
 </div>
 <div class="book-description">
@@ -26,6 +27,7 @@
   <input type="text" value="View Details">
 </div>
 </div>
+<% } %>
 </head>
 <body>
   
