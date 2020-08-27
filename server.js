@@ -7,7 +7,7 @@ const superagent = require('superagent');
 const pg = require('pg');
 const serveStatic = require('serve-static');
 require('dotenv').config();
-const pg = require('pg');
+const DATABASE_URL =  process.env.DATABASE_URL;
 
 //Global Variables
 const PORT = process.env.PORT || 3003;
@@ -29,6 +29,20 @@ app.use(express.urlencoded({extended:true}));
 
 //Routes
 app.get('/', (request, response) => {
+  let search = request.body.search;
+  const sqlTable = `SELECT * FROM locations WHERE search_query='${search}';`;
+  client.query(sqlTable)
+    .then(result => {
+      response.render('pages/index', {bookArray : result});
+      console.log(result);
+    })
+    .catch(error => {
+      handleError(error, response);
+    });
+
+
+
+
   response.render('pages/index');
 });
 app.get('/searches/new', (request, response) => {
