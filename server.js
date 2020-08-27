@@ -7,7 +7,7 @@ const superagent = require('superagent');
 const pg = require('pg');
 const serveStatic = require('serve-static');
 require('dotenv').config();
-const DATABASE_URL =  process.env.DATABASE_URL;
+const DATABASE_URL = process.env.DATABASE_URL;
 
 //Global Variables
 const PORT = process.env.PORT || 3003;
@@ -29,21 +29,15 @@ app.use(express.urlencoded({extended:true}));
 
 //Routes
 app.get('/', (request, response) => {
-  let search = request.body.search;
-  const sqlTable = `SELECT * FROM locations WHERE search_query='${search}';`;
+  const sqlTable = `SELECT * FROM store_books`;
   client.query(sqlTable)
     .then(result => {
-      response.render('pages/index', {bookArray : result});
       console.log(result);
+      response.render('pages/index', {bookArray : result});
     })
     .catch(error => {
       handleError(error, response);
     });
-
-
-
-
-  response.render('pages/index');
 });
 app.get('/searches/new', (request, response) => {
   response.render('pages/searches/new');
@@ -129,7 +123,7 @@ function Book (searchData) {
 
 app.get('*', handleError);
 // this proves that the handleError function is working
-app.listen(PORT, () => console.log(`listening to port: ${PORT}`));
+
 
 
 //start the server
