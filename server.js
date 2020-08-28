@@ -28,7 +28,14 @@ app.use(express.static('./public'));
 which creates the body*/
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
+app.get('/books/:id', getSingleBook);
 
+function getSingleBook(request, response){
+  client.query('SELECT * FROM store_books WHERE id=$1', [request.params.id])
+    .then(result => {
+      response.render('pages/books/detail', {book : result.rows[0]});
+    })
+}
 
 
 //********************Routes
@@ -70,7 +77,7 @@ app.post('/searches/new', (request, response) => {
         //items is the array of data coming back from the API
         return new Book(response);
       });
-      response.render('pages/searches/show', {bookArray : bookArray});
+      response.render('pages/books/show', {bookArray : bookArray});
       //we will basically insert the file path above and then use the {key:value}
       // the key above will be used in our EJS when we loop through array
     })

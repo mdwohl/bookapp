@@ -20,7 +20,7 @@
       </div>
     <div class="book-title"><%= bookArray[i].title %>
     </div>
-    <div class= "book-author"><% bookArray[i].authors %>
+    <div class= "book-author"><%= bookArray[i].authors %>
 <!-- Add in author Name -remember that it is an array of authors which will require another for loop -->
     </div>
     <div class="book-description">
@@ -28,7 +28,9 @@
     </div>
     <!-- the div below should become a form so that we can add inputs based of lab 12 (ISBN, save etc.) WE do not need a fieldset and legend and change the 'type' to be hidden. We may also just get rid of labels. We just want a button with a hidden form.-->
     <div class="book-select">
-      <p>Select this book</p>
+      <form action="/pages/books/detail<%= bookArray %>" method="POST">
+        <input type="submit" value="Select this Book">
+      </form>
     </div>
     </div>
     <% } %>
