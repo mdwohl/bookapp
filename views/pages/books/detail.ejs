@@ -1,0 +1,12 @@
+
+<%- include('../../layout/partial') %>
+<ul>
+  <a href="pages/detail<%= book.id %>">
+  <li><%= book.author %></li>
+  <li><%= book.title %></li>
+  <li><%= book.isbn %></li>
+  <img src="<%= book.author %>" alt='book image'>
+  <li><%= book.description %></li>
+  </a>
+  <% }) %>
+</ul>
