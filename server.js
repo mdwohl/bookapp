@@ -14,7 +14,6 @@ const DATABASE_URL = process.env.DATABASE_URL;
 const PORT = process.env.PORT || 3003;
 const app = express();
 const methodOverride = require('method-override');
-const { response } = require('express');
 
 const client = new pg.Client(DATABASE_URL);
 client.on('error', error => console.error(error));
@@ -61,24 +60,6 @@ app.get('/searches/new', (request, response) => {
 });
 
 
-app.post('/books', (request, response) => {
-  const {author, title, isbn,image_url, description} = request.body;
-  const values = [author, title, isbn,image_url, description];
-  const mySql = `INSERT INTO store_books (author, title, isbn, image_url, description) VALUES ($1, $2, $3,$4, $5)`;
-  client.query(mySql, values)
-    .then( result => {
-      response.redirect('/pages/books/detail', {bookArray:result.rows});
-    })
-    .catch(error => {
-      handleError(error, response);
-    });
-});
-
-
-
-
-
-
 
 //create a route that is an app.post route
 // we need information from the user to make a request to GoogleBooks API
@@ -110,7 +91,24 @@ function handleError(error, response){
   response.render('error', {error});
 }
 
-
+// app.post('/searches', (request, response) => {
+//   console.log(request.body);
+//   let search = request.body.search;
+//   let string = `https://www.googleapis.com/books/v1/volumes?q=+in${search[1]}:${search[0]}=10`;
+//   superagent.get(string)
+//     .then(books => {
+//       //we will still have response.send but we will also have page we will send them to here as well
+//       response.send(books.body);
+//       console.log(books.body);
+//       //response.render('fileImGonna Create', { banana:books.body(or object name to right of colon)});
+//       //we will basically insert the file path above and then use the {key:value}
+//       // the key above will be used in our EJS when we loop through array
+//     })
+//     .catch(error => {
+//       console.log(error);
+//       response.status(500).send(error, 'Bad Request, Internal Server Error');
+//     });
+// });
 
 //ternary operator
 //that thing defined in js ? set it to ----- : otherwise set it to default image
@@ -134,7 +132,6 @@ function Book (searchData) {
   this.title = volumeInfo.title;
   this.authors = volumeInfo.authors; // this is not a single value, but an array of authors
   // when we decide to access this property in the template, remember that it is an array
-  this.isbn = volumeInfo.isbn;
   this.publisher = volumeInfo.publisher;
   this.description = volumeInfo.description;
   this.pageCount = volumeInfo.pageCount;
